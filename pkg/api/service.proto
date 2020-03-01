@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "api";
+
+import "google/protobuf/timestamp.proto";
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+service API {
+    // Create a new user
+    rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
+
+    // Lookup user by ID
+    rpc GetUser(GetUserRequest) returns (GetUserResponse);
+}
+
+message CreateUserRequest {
+    string first_name = 1;
+    string last_name = 2;
+    google.protobuf.Timestamp date_of_birth = 3 [ (gogoproto.nullable) = false, (gogoproto.stdtime) = true ];
+}
+
+message CreateUserResponse {
+    string id = 1 [ (gogoproto.customname) = "ID" ];
+}
+
+message GetUserRequest {
+    string id = 1 [ (gogoproto.customname) = "ID" ];
+}
+
+message GetUserResponse {
+    string id = 1 [ (gogoproto.customname) = "ID" ];
+    string first_name = 2;
+    string last_name = 3;
+    google.protobuf.Timestamp date_of_birth = 4 [ (gogoproto.nullable) = false, (gogoproto.stdtime) = true ];
+    // credit score between 0 and 1
+    double credit_score = 5;
+}

@@ -1,0 +1,10 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.14-buster-node
+      - image: egymgmbh/datastore-emulator:9e3bb956f5bc3d5aeaf3302b0933afa5defd4770
+    steps:
+      - checkout
+      - run: go build -o main ./cmd/main.go
+      - run: go test -v ./inttest

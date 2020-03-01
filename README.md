@@ -1,2 +1,2 @@
-# inttest-example-go
-An example black box integration test
+# Integration Test Example - Go
+An example black box integration test written in Go

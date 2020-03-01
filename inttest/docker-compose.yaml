@@ -1,0 +1,6 @@
+version: '3'
+services:
+  datastore:
+    image: egymgmbh/datastore-emulator:9e3bb956f5bc3d5aeaf3302b0933afa5defd4770
+    ports:
+      - "8282:8282"
